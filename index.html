@@ -1,1 +1,89 @@
-aaa
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>沈丛娟，生日快乐！ 🎂</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        #times div #d2, #h2, #i2, #s2 {
+            font-size: 1.8rem;
+            /* line-height: 2rem; */
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+<h1 data-splitting>沈丛娟，生日快乐！<br>🎂</h1>
+
+<div id="times" style="color: #20c1ff;
+    text-shadow: 0 0 2px white;
+    font-size: 1.4rem;
+    font-weight: 800;display: none;text-align: center">
+    这是你来到这颗星球的
+    <div>
+        <div>
+            <span>第</span>
+            <span id="d2"></span>
+            <span>天</span>
+            <span id="h2"></span>
+            <span>时</span>
+            <span id="i2"></span>
+            <span>分</span>
+            <span id="s2"></span>
+            <span>秒</span>
+        </div>
+    </div>
+    <br>
+    <p>因为你的存在，<br>这个世界才变得丰富多彩。</p>
+    <p>在未来的日子了，<br>希望你更加幸福、欢乐。</p>
+
+</div>
+
+
+<script src='js/splitting.min.js'></script>
+<script src='js/timecount.js?id=12'></script>
+<script src="js/script.js"></script>
+<script src="js/jquery.js"></script>
+<script>
+    window.onload = function () {
+
+        xcsoft.countup('2018-11-11', function (time) {
+            document.getElementById("d2").innerHTML = time.day
+            document.getElementById("h2").innerHTML = time.hourZero
+            document.getElementById("i2").innerHTML = time.minuteZero
+            document.getElementById("s2").innerHTML = time.secondZero
+        })
+
+        $("#times").show();
+
+        var i = 0;
+
+        function getColor() {
+            i++;
+            switch (i) {
+                case 1:
+                    return "#ff0000";
+                case 2:
+                    return "#ff6600";
+                case 3:
+                    return "#3366cc";
+                default:
+                    return "black";
+            }
+        }
+
+        function colorful() {
+            $('#times div #d2, #h2, #i2, #s2').css('color', getColor());
+            if (i === 3) i = 0;
+            setTimeout(colorful, 1000);
+        }
+
+        colorful();
+    }
+</script>
+</body>
+</html>
